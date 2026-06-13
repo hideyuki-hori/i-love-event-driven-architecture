@@ -44,6 +44,21 @@ services:
       DYNAMIC_CONFIG_ENABLED: "true"
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_NAME: local-connect
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS: http://connect:8083
+    networks:
+      - kafka-net
+
+  connect:
+    image: apache/kafka:4.3.0
+    depends_on:
+      - kafka
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./connect-distributed.properties:/opt/kafka/config/connect-distributed.properties
+      - ./connect-data:/data
+    command: ["bash", "-c", "mkdir -p /opt/kafka/plugins/connect-file && cp /opt/kafka/libs/connect-file-*.jar /opt/kafka/plugins/connect-file/ && exec /opt/kafka/bin/connect-distributed.sh /opt/kafka/config/connect-distributed.properties"]
     networks:
       - kafka-net
 

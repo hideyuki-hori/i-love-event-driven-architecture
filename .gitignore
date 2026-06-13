@@ -3,3 +3,4 @@ build
 .kotlin
 .idea/
 *.iml
+.devcontainer/connect-data/*.txt
