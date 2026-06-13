@@ -1,0 +1,20 @@
+{
+  "name": "java-cassandra-sandbox",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installGradle": true,
+      "gradleVersion": "9.5.1"
+    }
+  },
+  "forwardPorts": [9042],
+  "postCreateCommand": "gradle wrapper --gradle-version 9.5.1",
+  "customizations": {
+    "vscode": {
+      "extensions": ["vscjava.vscode-java-pack", "vscjava.vscode-gradle"]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+[versions]
+cassandra-driver = "4.19.3"
+slf4j = "2.0.16"
+junit-jupiter = "6.0.1"
+
+[libraries]
+cassandra-driver = { module = "org.apache.cassandra:java-driver-core", version.ref = "cassandra-driver" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
