@@ -1,4 +1,4 @@
 # blog
 
-- [ja](https://zenn.dev/hideyuki_hori/articles/8ce83fd931baa8)
-- [en](https://zenn.dev/hideyuki_hori/articles/8ce83fd931baa8?locale=en)
+- [ja](https://zenn.dev/hideyuki_hori/articles/8d13751240091c)
+- [en](https://zenn.dev/hideyuki_hori/articles/8d13751240091c?locale=en)
