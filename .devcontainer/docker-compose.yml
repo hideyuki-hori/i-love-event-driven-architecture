@@ -6,6 +6,7 @@ services:
     command: sleep infinity
     depends_on:
       - kafka
+      - mysql
     networks:
       - kafka-net
 
@@ -53,12 +54,41 @@ services:
     image: apache/kafka:4.3.0
     depends_on:
       - kafka
+      - mysql
     ports:
       - "8083:8083"
     volumes:
       - ./connect-distributed.properties:/opt/kafka/config/connect-distributed.properties
-      - ./connect-data:/data
-    command: ["bash", "-c", "mkdir -p /opt/kafka/plugins/connect-file && cp /opt/kafka/libs/connect-file-*.jar /opt/kafka/plugins/connect-file/ && exec /opt/kafka/bin/connect-distributed.sh /opt/kafka/config/connect-distributed.properties"]
+    command:
+      - bash
+      - -c
+      - |
+        mkdir -p /opt/kafka/plugins
+        if [ ! -d /opt/kafka/plugins/debezium-connector-mysql ]; then
+          wget -q -O /tmp/dbz.tgz https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/3.5.2.Final/debezium-connector-mysql-3.5.2.Final-plugin.tar.gz
+          tar -xzf /tmp/dbz.tgz -C /opt/kafka/plugins
+        fi
+        exec /opt/kafka/bin/connect-distributed.sh /opt/kafka/config/connect-distributed.properties
+    networks:
+      - kafka-net
+
+  mysql:
+    image: mysql:8.4
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: dbz
+      MYSQL_PASSWORD: dbz
+    command:
+      - --server-id=1
+      - --log-bin=mysql-bin
+      - --binlog-format=ROW
+      - --binlog-row-image=FULL
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql
     networks:
       - kafka-net
 
@@ -67,3 +97,4 @@ networks:
 
 volumes:
   kafka-data:
+  mysql-data:

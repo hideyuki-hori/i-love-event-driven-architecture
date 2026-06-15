@@ -2,5 +2,5 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-rootProject.name = "kafka-sandbox"
+rootProject.name = "debezium-sandbox"
 include("app")

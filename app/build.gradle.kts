@@ -8,6 +8,7 @@ repositories {
 
 dependencies {
     implementation(libs.kafka.clients)
+    implementation(libs.mysql.connector)
     implementation(libs.slf4j.simple)
 
     testImplementation(libs.junit.jupiter)
@@ -21,21 +22,21 @@ java {
 }
 
 application {
-    mainClass = "com.example.LikeProducer"
+    mainClass = "com.example.LikeWriter"
 }
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
 
-tasks.register<JavaExec>("runProducer") {
+tasks.register<JavaExec>("runWriter") {
     group = "application"
-    mainClass = "com.example.LikeProducer"
+    mainClass = "com.example.LikeWriter"
     classpath = sourceSets["main"].runtimeClasspath
 }
 
-tasks.register<JavaExec>("runConsumer") {
+tasks.register<JavaExec>("runReader") {
     group = "application"
-    mainClass = "com.example.LikeConsumer"
+    mainClass = "com.example.LikeCdcReader"
     classpath = sourceSets["main"].runtimeClasspath
 }
