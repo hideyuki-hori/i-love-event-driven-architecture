@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "name": "Key",
+  "namespace": "dbz.appdb.likes",
+  "fields": [
+    {
+      "name": "post_id",
+      "type": "string"
+    },
+    {
+      "name": "user_id",
+      "type": "string"
+    }
+  ],
+  "connect.name": "dbz.appdb.likes.Key"
+}
