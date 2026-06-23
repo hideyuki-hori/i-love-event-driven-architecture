@@ -1,0 +1,41 @@
+{
+  "name": "java-kafka-streams-sandbox",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installGradle": true,
+      "gradleVersion": "9.5.1"
+    }
+  },
+  "forwardPorts": [8080, 8081, 8083, 29092],
+  "portsAttributes": {
+    "8080": {
+      "label": "kafka-ui",
+      "onAutoForward": "notify"
+    },
+    "8081": {
+      "label": "schema-registry",
+      "onAutoForward": "silent"
+    },
+    "8083": {
+      "label": "connect",
+      "onAutoForward": "silent"
+    },
+    "29092": {
+      "label": "kafka-external",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "gradle wrapper --gradle-version 9.5.1",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle"
+      ]
+    }
+  }
+}

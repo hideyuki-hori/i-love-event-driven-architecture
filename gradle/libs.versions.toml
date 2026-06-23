@@ -1,0 +1,17 @@
+[versions]
+kafka-clients = "4.3.0"
+mysql-connector = "9.7.0"
+slf4j = "2.0.16"
+junit-jupiter = "6.0.1"
+confluent = "8.2.1"
+avro = "1.12.1"
+
+[libraries]
+kafka-clients = { module = "org.apache.kafka:kafka-clients", version.ref = "kafka-clients" }
+mysql-connector = { module = "com.mysql:mysql-connector-j", version.ref = "mysql-connector" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version.ref = "confluent" }
+avro = { module = "org.apache.avro:avro", version.ref = "avro" }
+kafka-streams = { module = "org.apache.kafka:kafka-streams", version.ref = "kafka-clients" }
+kafka-streams-avro-serde = { module = "io.confluent:kafka-streams-avro-serde", version.ref = "confluent" }
