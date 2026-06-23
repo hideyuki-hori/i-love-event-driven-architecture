@@ -70,6 +70,7 @@ public class LikeCountStreams {
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "like-count");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
         props.put(StreamsConfig.consumerPrefix(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG), "earliest");
+        props.put(StreamsConfig.STATESTORE_CACHE_MAX_BYTES_CONFIG, 0);
 
         var streams = new KafkaStreams(builder.build(), props);
         streams.cleanUp();
