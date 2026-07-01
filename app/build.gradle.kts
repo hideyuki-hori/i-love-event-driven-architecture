@@ -1,6 +1,7 @@
 plugins {
     application
     id("com.github.davidmc24.gradle.plugin.avro") version "1.9.1"
+    id("com.gradleup.shadow") version "9.4.3"
 }
 
 repositories {
@@ -19,6 +20,13 @@ dependencies {
     implementation(libs.kafka.streams)
     implementation(libs.kafka.streams.avro.serde)
 
+    compileOnly(libs.flink.streaming.java)
+    compileOnly(libs.flink.clients)
+    implementation(libs.flink.connector.base)
+    implementation(libs.flink.connector.kafka)
+    implementation(libs.flink.avro)
+    implementation(libs.flink.avro.confluent.registry)
+
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
@@ -27,6 +35,14 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(25)
     }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.release.set(21)
+}
+
+tasks.shadowJar {
+    mergeServiceFiles()
 }
 
 avro {

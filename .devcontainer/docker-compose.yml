@@ -124,6 +124,38 @@ services:
     networks:
       - kafka-net
 
+  jobmanager:
+    image: flink:2.2.1-java21
+    ports:
+      - "8082:8081"
+    command: jobmanager
+    depends_on:
+      kafka:
+        condition: service_healthy
+      schema-registry:
+        condition: service_started
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+    volumes:
+      - ..:/workspace:cached
+    networks:
+      - kafka-net
+
+  taskmanager:
+    image: flink:2.2.1-java21
+    command: taskmanager
+    depends_on:
+      - jobmanager
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 4
+    networks:
+      - kafka-net
+
 networks:
   kafka-net:
 

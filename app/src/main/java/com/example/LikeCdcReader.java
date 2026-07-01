@@ -16,7 +16,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class LikeCdcReader {
-    static void main() {
+    public static void main(String[] args) {
         var props = getProperties();
 
         var emptyPolls = 0;

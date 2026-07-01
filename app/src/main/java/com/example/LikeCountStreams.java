@@ -28,7 +28,7 @@ import org.apache.kafka.streams.state.ReadOnlyKeyValueStore;
 import static java.lang.Thread.sleep;
 
 public class LikeCountStreams {
-    static void main() throws Exception {
+    public static void main(String[] args) throws Exception {
         var registryUrl = "http://schema-registry:8081";
         var serdeConfig = Map.of(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, registryUrl);
 
@@ -43,7 +43,7 @@ public class LikeCountStreams {
         KStream<Key, Envelope> source = builder.stream("dbz.appdb.likes", Consumed.with(keySerde, envSerde));
 
         source
-            .groupBy((k, _) -> k.getPostId(), Grouped.with(Serdes.String(), envSerde))
+            .groupBy((k, value) -> k.getPostId(), Grouped.with(Serdes.String(), envSerde))
             .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as("naive-count")
                 .withKeySerde(Serdes.String()).withValueSerde(Serdes.Long()))
             .toStream()

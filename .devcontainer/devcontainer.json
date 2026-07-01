@@ -10,7 +10,7 @@
       "gradleVersion": "9.5.1"
     }
   },
-  "forwardPorts": [8080, 8081, 8083, 29092],
+  "forwardPorts": [8080, 8081, 8082, 8083, 29092],
   "portsAttributes": {
     "8080": {
       "label": "kafka-ui",
@@ -19,6 +19,10 @@
     "8081": {
       "label": "schema-registry",
       "onAutoForward": "silent"
+    },
+    "8082": {
+      "label": "flink",
+      "onAutoForward": "notify"
     },
     "8083": {
       "label": "connect",
