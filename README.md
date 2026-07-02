@@ -6,3 +6,4 @@
 - 2026-06-23 [🌊 EDA-06 Kafka Streams を理解する](https://zenn.dev/hideyuki_hori/articles/a1d197819c161a)
 - 2026-06-27 [🐿️ EDA-07 Flink の概念を理解する](https://zenn.dev/hideyuki_hori/articles/9a20d7cd25e3b8)
 - 2026-06-28 [🧵 EDA-08 イベント駆動アーキテクチャ の学びを振り返る EDA-01-07](https://zenn.dev/hideyuki_hori/articles/cb42ab52143199)
+- 2026-07-02 [🚀 EDA-09 Flink を動かす](https://zenn.dev/hideyuki_hori/articles/4cfd17134fc1f0)
