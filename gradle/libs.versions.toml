@@ -7,6 +7,7 @@ confluent = "8.2.1"
 avro = "1.12.1"
 flink = "2.2.1"
 flink-kafka = "5.0.0-2.2"
+spark = "4.2.0"
 
 [libraries]
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version.ref = "kafka-clients" }
@@ -23,3 +24,5 @@ flink-connector-base = { module = "org.apache.flink:flink-connector-base", versi
 flink-connector-kafka = { module = "org.apache.flink:flink-connector-kafka", version.ref = "flink-kafka" }
 flink-avro = { module = "org.apache.flink:flink-avro", version.ref = "flink" }
 flink-avro-confluent-registry = { module = "org.apache.flink:flink-avro-confluent-registry", version.ref = "flink" }
+spark-sql = { module = "org.apache.spark:spark-sql_2.13", version.ref = "spark" }
+spark-avro = { module = "org.apache.spark:spark-avro_2.13", version.ref = "spark" }

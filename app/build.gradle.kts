@@ -22,6 +22,8 @@ dependencies {
 
     compileOnly(libs.flink.streaming.java)
     compileOnly(libs.flink.clients)
+    compileOnly(libs.spark.sql)
+    compileOnly(libs.spark.avro)
     implementation(libs.flink.connector.base)
     implementation(libs.flink.connector.kafka)
     implementation(libs.flink.avro)
@@ -73,4 +75,11 @@ tasks.register<JavaExec>("runStreams") {
     group = "application"
     mainClass = "com.example.LikeCountStreams"
     classpath = sourceSets["main"].runtimeClasspath
+}
+
+tasks.register<JavaExec>("runLoad") {
+    group = "application"
+    mainClass = "com.example.LikeLoadWriter"
+    classpath = sourceSets["main"].runtimeClasspath
+    args((project.findProperty("rate") ?: "100").toString())
 }

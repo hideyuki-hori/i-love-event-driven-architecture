@@ -156,6 +156,21 @@ services:
     networks:
       - kafka-net
 
+  spark:
+    image: apache/spark:4.2.0-java25
+    ports:
+      - "4040:4040"
+    command: sleep infinity
+    depends_on:
+      kafka:
+        condition: service_healthy
+      schema-registry:
+        condition: service_started
+    volumes:
+      - ..:/workspace:cached
+    networks:
+      - kafka-net
+
 networks:
   kafka-net:
 
