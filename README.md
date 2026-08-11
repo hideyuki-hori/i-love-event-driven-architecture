@@ -10,16 +10,14 @@
 - 2026-06-28 [🧵 EDA-08 イベント駆動アーキテクチャ の学びを振り返る EDA-01-07](https://zenn.dev/hideyuki_hori/articles/cb42ab52143199)
 - 2026-07-02 [🚀 EDA-09 Flink を動かす](https://zenn.dev/hideyuki_hori/articles/4cfd17134fc1f0)
 - 2026-07-14 [🧊 EDA-10 Iceberg の概念を理解する](https://zenn.dev/hideyuki_hori/articles/1188c9acc8b222)
-
+- 2026-08-11 [⚡ EDA-11 Spark を動かす](https://zenn.dev/hideyuki_hori/articles/c550e62ed4a79e)
 > If you'd like to read these articles in English, try appending `?locale=en` to the article URL.
 > If Zenn has finished its automatic translation, you'll be able to read them in English.
 
 ## In Progress
 
-- Spark の概念を理解する
+- Trino を動かす
 
 ## TODO
 
-- Trino の概念を理解する
-- OpenTelemetry の概念を理解する
-- TODO
+- 全マシイベント駆動アーキテクチャをlocalで動かして試してみる
