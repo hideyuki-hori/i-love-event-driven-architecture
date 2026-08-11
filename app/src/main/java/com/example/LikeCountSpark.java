@@ -20,6 +20,7 @@ public class LikeCountSpark {
         var spark = SparkSession.builder()
             .appName("like-count-spark")
             .getOrCreate();
+        spark.sparkContext().setLogLevel("WARN");
 
         var events = spark.readStream()
             .format("kafka")
